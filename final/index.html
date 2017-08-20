@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Getting Started with Web Components</title>
+    <style>
+      body {
+        display: flex;
+        background-color: #eee;
+        -webkit-display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-rendering: optimizeLegibility;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        font-weight: 300;
+        font-size: 36px;
+        color: #369;
+      }
+      p {
+        font-size: 18px;
+      }
+      @media (max-width: 500px) {
+        h1 {
+          font-size: 250%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Web Components are Awesome!</h1>
+    <lazy-image src="images/bald-eagle.jpg"></lazy-image>
+    <p id="element"></p>
+
+    <script>
+      document.getElementById('element').innerText = '<lazy-image src="images/bald-eagle.jpg"></lazy-image>';
+    </script>
+
+    <script>
+      const supportsCustomElementsV1 = 'customElements' in window;
+
+      function loadScript(src) {
+       return new Promise(function(resolve, reject) {
+         const script = document.createElement('script');
+         script.src = src;
+         script.onload = resolve;
+         script.onerror = reject;
+         document.head.appendChild(script);
+       });
+      }
+
+      // check if custom elements are supported natively by the browser
+      if(!supportsCustomElementsV1){
+        // if they are not supported, display an appropriate message.
+        // you can also load in a polyfill here
+        document.querySelector('body').innerHTML = '<h1>Custom elements not supported natively. Use a browser like Chrome v54.</h1>';
+      }
+      else {
+        // native support. now you can load the custom element
+        loadScript('lazyimage.js').then(e => {
+          console.log('lazy-image.js has been loaded');
+        });
+      }
+    </script>
+
+  </body>
+</html>

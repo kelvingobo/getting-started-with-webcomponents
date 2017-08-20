@@ -1,0 +1,3 @@
+Getting started with custom elements v1: https://developers.google.com/web/fundamentals/getting-started/primers/customelements
+Simple lazy load image fade javascript: https://davidwalsh.name/lazyload-image-fade
+Web components: https://developer.mozilla.org/en-US/docs/Web/Web_Components
