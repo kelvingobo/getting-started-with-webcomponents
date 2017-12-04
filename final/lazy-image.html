@@ -1,0 +1,23 @@
+<template id="ls-img">
+  <style>
+
+    :host {
+      display: block;
+      background-color: #bbb;
+      --height: 400px;
+      --width: 400px;
+    }
+
+    img {
+      width: var(--width);
+      height: var(--height);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+  </style>
+
+  <img>
+
+</template>
+<script src="lazy-image.js"></script>
